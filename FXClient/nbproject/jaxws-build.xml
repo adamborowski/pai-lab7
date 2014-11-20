@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
+        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
+        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
+        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
+
+        --><project xmlns:xalan="http://xml.apache.org/xslt" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${libs.jaxws21.classpath}"/>
+        </taskdef>
+    </target>
+    <target name="wsimport-client-LabService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/LabService"/>
+        <property name="wsdl-LabService" location="xml-resources/web-service-references/LabService/wsdl/localhost_8080/LabServiceService/LabService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/LabService" destdir="${build.generated.dir}/jax-wsCache/LabService" wsdl="${wsdl-LabService}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/LabServiceService/LabService?wsdl" xnocompile="true" xendorsed="true" package="fxclient.wsclient">
+            <depends file="${wsdl-LabService}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/LabService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/LabService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-LabService" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/LabService"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/fxclient/wsclient"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-LabService"/>
+</project>
